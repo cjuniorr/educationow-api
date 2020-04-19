@@ -6,7 +6,7 @@ namespace EducatioNow.Api.Data.Interfaces
 {
     public interface IProfessorRepository
     {
-        Task<IEnumerable<Professor>> GetProfessors();
+        Task<IEnumerable<Professor>> GetProfessores();
 
         Task Create(Professor professor);
 

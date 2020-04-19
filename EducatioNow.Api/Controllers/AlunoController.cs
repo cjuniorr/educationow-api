@@ -10,7 +10,7 @@ namespace EducatioNow.Api.Controllers
     [ApiController]
     public class AlunoController : ControllerBase
     {
-        public IAlunoRepository _alunoRepository { get; }
+        public IAlunoRepository _alunoRepository;
 
         public AlunoController(IAlunoRepository alunoRepository)
         {

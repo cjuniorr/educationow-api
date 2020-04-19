@@ -24,7 +24,7 @@ namespace EducatioNow.Api.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Professor>> GetProfessors()
+        public async Task<IEnumerable<Professor>> GetProfessores()
         {
             try
             {
