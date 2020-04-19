@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using EducatioNow.Api.Data.Interfaces;
+using EducatioNow.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EducatioNow.Api.Controllers
 {
@@ -11,11 +10,19 @@ namespace EducatioNow.Api.Controllers
     [ApiController]
     public class AlunoController : ControllerBase
     {
+        public IAlunoRepository _alunoRepository { get; }
+
+        public AlunoController(IAlunoRepository alunoRepository)
+        {
+            _alunoRepository = alunoRepository;
+        }
         // GET: api/Aluno
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Aluno>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var alunos = await _alunoRepository.GetAlunos();
+
+            return alunos;
         }
 
         // GET: api/Aluno/5

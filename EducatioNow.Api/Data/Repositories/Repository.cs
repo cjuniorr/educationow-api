@@ -14,7 +14,7 @@ namespace EducatioNow.Infra.Data.Repositories
             ConnectionStringOptions = connectionString;
         }
 
-        protected IDbConnection CreateOracleConnection() //string connectionName = "OracleConnection"
+        protected IDbConnection CreateOracleConnection()
         {
             return new OracleConnection(ConnectionStringOptions.Value.OracleConnection);
         }
