@@ -16,38 +16,26 @@ namespace EducatioNow.Api.Controllers
         {
             _alunoRepository = alunoRepository;
         }
-        // GET: api/Aluno
+
         [HttpGet]
-        public async Task<IEnumerable<Aluno>> Get()
+        public async Task<IEnumerable<Aluno>> RetornaAlunos()
         {
             var alunos = await _alunoRepository.GetAlunos();
 
             return alunos;
         }
-
-        // GET: api/Aluno/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Aluno
+        [Route("adiciona")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> AdicionaAluno([FromBody] Aluno aluno)
         {
-        }
+            if (aluno is null)
+            {
+                return BadRequest();
+            }
 
-        // PUT: api/Aluno/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            await _alunoRepository.Create(aluno);
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok();
         }
     }
 }
