@@ -16,3 +16,9 @@ Rode o script SQL para criação e tabelas na base do Oracle
 ```bash
 Tabelas.sql
 ```
+
+## Endpoints
+
+```GET: /api/alunos```
+
+```GET: /api/professores```
