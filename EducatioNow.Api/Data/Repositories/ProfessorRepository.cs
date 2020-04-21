@@ -21,7 +21,20 @@ namespace EducatioNow.Api.Data.Repositories
 
         public async Task Create(Professor professor)
         {
-            throw new NotImplementedException();
+            using (var connection = CreateOracleConnection())
+            {
+                var ultimoId = await connection.QueryFirstOrDefaultAsync<int>(@"SELECT ID FROM PROFESSOR ORDER BY ID");
+
+                var parametros = new
+                {
+                    id = ultimoId + 1,
+                    nome = professor.Nome,
+                    email = professor.Email,
+                    dtNascimento = professor.DtNascimento
+                };
+
+                await connection.QueryAsync<Professor>(@"INSERT INTO PROFESSOR (ID, NOME, EMAIL, DTNASCIMENTO) VALUES(:id, :nome, :email, :dtNascimento)", parametros);
+            }
         }
 
         public async Task<IEnumerable<Professor>> GetProfessores()

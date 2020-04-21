@@ -70,9 +70,9 @@ namespace EducatioNow.Infra.Data.Repositories
             {
                 using (var connection = CreateOracleConnection())
                 {
-                    //var alunos = await connection.QueryAsync<Aluno>(@"SELECT ID, TURMAID, NOME, ENDERECOID, TELEFONEID, EMAIL, DTNASCIMENTO FROM ALUNO");
+                    var alunos = await connection.QueryAsync<Aluno>(@"SELECT ID, TURMAID, NOME, ENDERECOID, TELEFONEID, EMAIL, DTNASCIMENTO FROM ALUNO");
 
-                    var alunos = GetMock();
+                    //var alunos = GetMock();
                     return alunos;
                 }
             }

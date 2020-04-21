@@ -6,7 +6,7 @@ namespace EducatioNow.Api.Models
     {
         public string Nome { get; set; }
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Email { get; set; }
 
