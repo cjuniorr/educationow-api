@@ -28,8 +28,9 @@ namespace EducatioNow.Api
                 connectionStringOptions.OracleConnection = Configuration.GetConnectionString("OracleConnection");
             });
 
-            services.AddTransient<IAlunoRepository, AlunoRepository>();
-            services.AddTransient<ITurmaRepository, TurmaRepository>();
+            services.AddTransient<IAlunoRepository, AlunoRepository>()
+                    .AddTransient<ITurmaRepository, TurmaRepository>()
+                    .AddTransient<IProfessorRepository, ProfessorRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
